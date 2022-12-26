@@ -11,7 +11,7 @@
     </section>
 
     <section class="text-end">
-        <a href="#" class="btn  btn-outline-dark">create new comic</a>
+        <a href="{{ route('comics.create') }}" class="btn  btn-outline-dark">create new comic</a>
     </section>
 
     <section>
