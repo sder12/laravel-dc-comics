@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Comic;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Validator;
+
 
 class ComicController extends Controller
 {
@@ -37,7 +39,22 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation
+        // $request->validate([
+        //     'title' => 'required | min:5 |max:150',
+        //     'thumb' => 'required',
+        //     'price' => 'required | min:1 | max:20',
+        //     'series' => 'required | min:5 | max:100',
+        //     'sale_date' => 'required',
+        //     'series' => 'type | min:5 | max:50',
+        // ]);
+
+        // Creation new element
+        $data = $request->all();
+        $comic = new Comic();
+        $comic->fill($data);
+        $comic->save();
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**
@@ -85,4 +102,28 @@ class ComicController extends Controller
     {
         //
     }
+
+
+    //CREARE PRIVATE FUNCTION
+    // private function validator($data)
+    // {
+    //     $validateResult = Validator::make($data, [], [])->validate();
+    //     return $validateResult;
+    // }
+
+    // private function validator($data)
+    // {
+    //     $validationResult = Validator::make($data, [
+    //         'title' => 'required | min:5 |max:150',
+    //         'thumb' => 'required',
+    //         'price' => 'required | min:1 | max:20',
+    //         'series' => 'required | min:5 | max:100',
+    //         'sale_date' => 'required',
+    //         'series' => 'type | min:5 | max:50',
+    //     ])->validate();
+    //     return $validationResult;
+    // }
+
+    //NELLO STORE 
+    //$data = $this->validation($request->all());
 }
