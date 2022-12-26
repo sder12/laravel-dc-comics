@@ -41,9 +41,18 @@
                                 <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-warning">
                                     <i class="fa-solid fa-pencil"></i>
                                 </a>
-                                <a href="#" class="btn btn-danger">
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
+                                <form action="{{ route('comics.destroy', $comic->id) }}" class="d-inline" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger delete-btn" data-comic-title="{{ $comic->title }}">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+
+                                {{-- soft delete creare nuova migration adding 
+                                UP $table->softDeletes() DOWN $table->dropDeletes()
+                                MODEL comic --> use SoftDeletes;
+                                --}}
                             </td>
                         </tr>
                     @endforeach
@@ -51,5 +60,5 @@
             </table>
         </div>
     </section>
-
+    @include('partials.delete-modal')
 @endsection
