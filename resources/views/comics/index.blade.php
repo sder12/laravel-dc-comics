@@ -35,7 +35,7 @@
                             <td>{{ $comic->series }}</td>
                             <td>{{ $comic->sale_date }}</td>
                             <td>
-                                <a href="#" class="btn btn-success">
+                                <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-success">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                                 <a href="#" class="btn btn-warning">
