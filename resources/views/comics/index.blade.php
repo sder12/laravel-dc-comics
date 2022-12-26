@@ -38,7 +38,7 @@
                                 <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-success">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
-                                <a href="#" class="btn btn-warning">
+                                <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-warning">
                                     <i class="fa-solid fa-pencil"></i>
                                 </a>
                                 <a href="#" class="btn btn-danger">
